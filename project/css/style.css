@@ -1,0 +1,1682 @@
+/*
+$Id: style.css 281 2013-04-23 22:25:37Z jcamejo $
+*/
+
+@font-face {
+    font-family: "Gill Sans";
+    src: url('../fonts/gillsans-bold.tf');
+    font-weight: normal;
+    font-style: normal;
+}
+}
+html
+{
+    text-shadow:none;
+    height: 100% !important;
+    width: 100%;
+}
+
+body
+{
+
+    background-color: #fff;
+    width:100%;
+    height: 100% !important;
+    margin: 0;
+    padding: 0;
+}
+
+a{
+    text-decoration: none;
+}
+
+p{
+    color: black;
+    margin:0;
+}
+h1,h2,h3,h4
+{
+    color:black;
+    text-shadow:none;
+}
+/*http://css-infos.net/property/-webkit-backface-visibility*/
+* 
+{
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    /*-webkit-backface-visibility: hidden; */
+}
+
+#wrapper
+{
+    position: relative;
+    width:100%;
+    min-width:100%;
+    height:212px;
+    background:#ddd;
+    border-top:1px solid #aaa;
+    border-bottom:1px solid #aaa;
+}
+#content
+{
+    position:absolute;
+    width: 100%;
+    height:90%;
+    overflow: hidden;
+    background: white;
+}
+.fullScreen 
+{
+    height: 100%;
+    width: 100%;
+}
+
+#loginScreen 
+{
+    position: absolute;
+    background-color: #01274A;
+    z-index:10000;
+}
+
+#loginScreen #loginButton
+{
+    position: absolute;
+    text-align: center;
+    color: #FFFFFF;
+    top: 50%;
+    left: 50%;
+}
+
+#teamsContent, #myTeamContainer
+{
+    position:absolute;
+    width: 100%;
+    height:87%;
+}
+
+#version
+{
+    position: absolute;
+    bottom: 1%;
+    right: 3%;
+    font-size: 13px;
+    color: #DDD;
+}
+.loader
+{
+    margin: 50% 50%;
+}
+
+
+.challengeDescription 
+{
+    text-align: center;
+}
+#teamsContent
+{
+    background-color: #01274A;
+}
+.tab
+{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+}
+.subTab
+{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#allGamesContainer
+{
+    margin-top: 16%;
+}
+
+.triangleImage {
+    position:absolute;
+    bottom:0;
+    right: 0;
+    width: 20%;
+    height: 30%;
+    z-index: 100;
+}
+.triangleImageInst {
+    position:absolute;
+    bottom:0;
+    right: 0;
+    width: 25%;
+    height: 100%;
+    z-index: 100;
+}
+
+#mainNav
+{
+    background: #01274A;
+    position: absolute;
+    text-align: center;
+    bottom:0;
+    width: 100%;
+    height:10%;
+    z-index:100;
+}
+
+#mainNav ul
+{
+    margin: 0;
+    padding: 0;
+    height: 50px;
+    height: 100%;
+    list-style-type: none;
+}
+
+#mainNav ul li
+{
+    position:relative;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    border-right:1px dotted #425E77;
+    margin: 0;
+    padding: 0;
+    text-align: center;
+    float: left;
+    width:27%;
+    height: 100%;
+    display: table;
+}
+
+#mainNav ul li a
+{
+
+    color: white !important;
+    font-weight: bold;
+    text-align: center;
+    margin: auto 0;
+    vertical-align: middle;
+    display: table-cell;
+    height: 100%;
+    font-size: 11px;
+}
+.noRightBorder
+{
+    border-right:0 !important;
+}
+
+#teamsSubNav, #battersSubNav, #pitchersSubNav, #myTeamSubNav
+{
+    position:absolute;
+    bottom:1%;
+
+}
+
+#rosterContainer
+{
+    position: absolute;
+    height:100%;
+    width: 100%;
+}
+
+.selected
+{
+    background-color: #3EA6db;
+}
+
+.hidden
+{
+    display: none;
+}
+
+.shown
+{
+    display: block;
+}
+
+.borders
+{
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    border:1px solid white;
+
+}
+
+#topContainer
+{
+     width: 100%;
+    float:left;
+    height:35%;
+    overflow:hidden;
+    display: block;
+}
+#mainPhoto
+{
+    width: 100%;
+    height:100%;
+    position: relative;
+}
+#pepsi-logo
+{
+    margin-top: 3%;
+}
+#newsContainer
+{
+    width: 100%;
+    float:left;
+    height:24%;
+    margin-top: 1%;
+    overflow:hidden;
+    display: block;
+}
+
+
+.boxScore
+{
+    width:85%;
+    position: absolute;
+    top:60%;
+    left: 3%;
+    z-index: 10000;
+    border: 8px solid white;
+    background: #01274A;
+    margin: 0 auto;
+    /*padding-top: 10px;
+    padding-bottom: 20px;
+    padding-left: 15px;*/
+    padding: 10px;
+
+}
+
+.newsFeed
+{
+    width: 100%;
+    position: absolute;
+    top: 35%;
+    height: 65%;
+    left: 0;
+    border: 2px solid #3EA6DB;
+    z-index: 1100;
+    background: white;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;
+}
+
+.newsFeed p
+{
+    color: black;
+    text-align: left;
+    font-size: 14px;
+    font-family: Arial;
+    font-weight: bold;
+    margin-left: 15px;
+    margin-right: 15px;
+}
+
+.newsFeed #headLine
+{
+    margin-left: 15px;
+    margin-right: 15px;
+    color:black;
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+}
+
+
+.newsFeed .tweetLink
+{
+    position: absolute;
+    right: 3%;
+    bottom: 2%;
+    color: #3EA6DB;
+}
+.newsFeed #closeNews
+{
+   font-size: 30px;
+   position: absolute;
+   left: 3%;
+   bottom: 2%;
+   color: #3EA6DB;
+   display: block;
+   width: 65px;
+   height:40px;
+
+   text-align: center;
+}
+.newsFeed .tweetButton
+{
+
+}
+.boxScore table
+{
+    width: 100%;
+    text-align: center;
+    vertical-align: middle;
+    font-size: 18px;
+    color: white;
+    border-collapse: collapse;
+}
+.boxScore table tr.rowLine
+{
+  border-top: 1px solid white;
+}
+
+.boxScore table tr .teamNameColumn
+{
+    width: 10%;
+    text-align: right;
+    padding-top: 1%;
+
+}
+
+.boxScore .arrow
+{
+    vertical-align: middle;
+}
+.boxScore .arrowColumn
+{
+    width: 5%;
+}
+
+ #scroller
+ {
+    width:0;
+ }
+
+
+#feedContainer
+{
+
+    width: 100%;
+    height: 62%;
+}
+
+#newsSlider
+{
+    width:100%; /* Tiene que ser mayor que la cantidad de noticias multiplicado por el ancho del dispositivo*/
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    display: block;
+    float:left;
+    height: 100%;
+}
+
+#newsSlider .games
+{
+    position:relative;
+    width: 640px;
+    padding:0;
+    margin:0;
+    float:left;
+    display: block;
+    background: #01274a;
+    height: 100%;
+}
+
+#photoContainer
+{
+    position: absolute;
+    bottom: 0;
+    border-top: 3px solid white;
+    height: 35%;
+    overflow: hidden;
+    display:block;
+    width: 100%;
+}
+
+#photoSlider
+{
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    height: 100%;
+    float:left;
+    display: block;
+    width:100%;
+}
+
+#photoSlider .photo
+{
+    padding:0;
+    margin:0;
+    float: left;
+    display: block;
+    height: 100%;
+    width: 150px;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    border-right:3px solid white;
+}
+
+.subtitleIns
+{
+    position: absolute;
+    height: 30px;
+    background: #01274A;
+    bottom:0px;
+    z-index: 100;
+    width: 147px;
+    font-size: 14px;
+    padding-left: 2px;
+    display: table;
+}
+.subtitleIns h6
+{
+    display: table-cell;
+    vertical-align: middle;
+    width: 100%;
+}
+
+.subtitleIns div
+{
+    display: table-cell;
+    vertical-align: middle;
+    width: 40%;
+    text-align:center;
+
+}
+.subtitleIns  div img
+{
+    display: table-cell;
+    vertical-align: middle;
+    float:right;
+    margin-right: 6px;
+}
+
+.subtitleInstMain{
+    position: absolute;
+    height: 15%;
+    width: 90%;
+    background: #01274A;
+    bottom:0;
+    z-index: 100;
+    color: white;
+    right: 0;
+    display: table;
+}
+.instMessage{
+    position: absolute;
+    height: 3%;
+    width: 90%;
+    background: #01274A;
+    top:0;
+    z-index: 100;
+    color: white;
+    left: 0;
+    display: table;
+}
+
+.instMessage #followText{
+    margin: 0.5em 0 0.5em 2em;
+    padding: 0;
+}
+
+.subtitleInstMain h4{
+    margin-top: 3px;
+    padding-left: 9px;
+    display: table-cell;
+    vertical-align: middle;
+}
+
+.subtitleInstMain div{
+    margin-top: 0.7em;
+    margin-right: 20px;
+    display: table-cell;
+    vertical-align: middle;
+    float: right
+}
+
+#topSlider
+{
+    width:100%; /* Tiene que ser mayor que la cantidad de noticias multiplicado por el ancho del dispositivo*/
+    margin:0;
+    padding:0;
+    list-style-type: none;
+    display: block;
+    float:left;
+    height: 100%;
+}
+
+#topSlider .news
+{
+    position:relative;
+    width: 100%;
+    padding:0;
+    margin:0;
+    float:left;
+    display: block;
+    height: 100%;
+}
+
+
+.status
+{
+    margin-top: 42%;
+    margin-left: 40%;
+    position: absolute;
+   /* -moz-transform: rotate(270deg);
+    -moz-transform-origin: 50% 50%;
+    -webkit-transform: rotate(270deg);
+    -webkit-transform-origin: 50% 50%;*/
+    color: #3ea6db;
+    text-shadow: none;
+    font-size: 16px;
+}
+
+.topRightLogo
+{
+    float:right;
+    margin-right: 8px;
+}
+
+#teamImageHeader
+{
+    margin-top: 5px;
+    margin-left: 5px;
+}
+
+
+.gameScore
+{
+    float: left;
+    width: 75%;
+    height: 100%;
+}
+.gameDetails
+{
+    float: left;
+    width: 25%;
+    height: 100%;
+}
+.gameDetails .inning
+{
+    float: left;
+    margin-top: 43%;
+    margin-left: 7.5%;
+
+}
+
+.gameDetails .inningPhase
+{
+    position: absolute;
+    top: 50%;
+    margin-left: 0.8%;
+
+}
+
+.gameDetails .nextGame
+{
+    position: absolute;
+    right: 2%;
+    top:40%;
+
+}
+
+.team
+{
+    position: absolute;
+    height: 50%;
+    width: 70%;
+    padding-top: 1%;
+    padding-left: 3.5%;
+    margin-left: 3%;
+    margin-right: 0;
+    display: table;
+}
+.team div
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 16px;
+
+}
+
+.team .logoContainer
+{
+   width: 20%;
+   height: 100%;
+   vertical-align: middle;
+
+}
+.team .nameContainer
+{
+    width: 70%;
+    height: 100%;
+    margin-left: 1%;
+    padding-left: 1%;
+
+}
+
+.team img
+{
+    float: left;
+}
+
+#scrollerSlider
+{
+    height:100%;
+}
+#scrollerTop
+{
+    height: 100%;
+}
+
+.bottomSection{
+    position:absolute;
+    min-width:100%;
+    height:39%;
+    margin-top: 1%;
+
+}
+
+#nextGames
+{
+    background-color: #01274A;
+}
+#twitterTab
+{
+    /*Temporal*/
+     box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    margin-right: 0.5%;
+    /*Temporal*/
+    position:relative;
+    float: left;
+    width:50%;
+    min-height:100%;
+    background-color: #3EA6DB;
+    background-size: 100% 100%;
+    font-family: Arial;
+
+}
+
+#twitterTab p{
+    text-align: left;
+    font-weight: bold;
+    font-size: 14px;
+    margin-right:9%;
+    margin-left: 4%;
+    margin-top: 7%;
+
+}
+#twitterTab .twitText{
+    font-size: 14px;
+
+
+}
+
+#instagramTab
+{
+    position:relative;
+    float: right;
+    margin-left: 0.5%;
+    width:49%;
+    height:100%;
+    background-color: #5B339F;
+}
+.imageLabel
+{
+    position: absolute;
+    bottom: 0;
+    height: 30px;
+    z-index: 1000;
+    background: #01274A;
+    width: 100%;
+    display:table;
+
+}
+.imageLabel p
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    font-size: 14px;
+    padding-left: 2px;
+}
+
+.imageLabel div
+{
+    float:right;
+    margin-top: 0.5em;
+    margin-right: 0.3em;
+}
+
+.imageLabel .triangleImageInstHome
+{
+}
+.imageLabel #labelText
+{
+    font-size: 10px;
+}
+
+.homeInstImage
+{
+    height:100%;
+    width:100%;
+}
+#twitter, #instagram
+{
+
+    text-shadow:none;
+    color: white;
+    font-size: 18px;
+}
+
+.sendTweet
+{
+    text-align: center;
+}
+
+#instagram-results
+{
+    position:absolute;
+    width: 100%;
+    height: 99%;
+    background: white;
+}
+
+#mainContainer
+{
+    position: absolute;
+    height: 64.5%;
+    width: 100%;
+}
+
+#mainPhotoIns
+{
+    height: 100%;
+    width: 100%;
+}
+
+#scrollerPhoto
+{
+    height:100%;
+}
+
+.image
+{
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+
+#newsPhoto
+{
+    position:relative;
+    float: left;
+    width: 50%;
+    background-image: url("../images/Bob-Abreu.jpg");
+    background-size: 100% 100%;
+    margin-top: 40px;
+}
+
+#newsText
+{
+    position:relative;
+    float: left;
+    width: 50%;
+    background-image: url("../images/newsText.PNG");
+    background-size: 100% 100%;
+    margin-top: 40px;
+}
+
+#thumbs
+{
+    margin-top: 70px;
+    height:100px;
+    background-image: url("../images/newsThumbs.PNG");
+    background-size: 100% 100%;
+}
+
+#teamPhoto
+{
+    position:relative;
+    float:left;
+    width: 40%;
+    min-height: 100%;
+    height: 150px;
+}
+
+#playersList
+{
+    position: relative;
+    float: right;
+    width: 60%;
+    height:443px;
+    background-color: #78C1E6;
+}
+
+
+#stats
+{
+    position: relative;
+    float:left;
+    width:40%;
+    height: 250px;
+    background-color: #5B339F;
+}
+
+.backHome
+{
+  position: fixed;
+  display: block;
+  background-color: #01274A;
+  color: white !important;
+  text-shadow:none;
+  min-width: 14%;
+  min-height:9%;
+  text-align: center;
+  border: 1px solid white;
+  top: 0;
+  z-index: 101;
+}
+
+.posTable
+{
+    width: 100%;
+    height: 81%;
+    color: white;
+    text-shadow:none;
+    border-collapse: collapse;
+    font-size: 12px;
+}
+
+.posTable tbody tr
+{
+    background: #01274A;
+    border-top:1px solid #3EA6DB;
+}
+#posTable
+{
+    width: 100%;
+    height: 80%;
+    color: white;
+    text-shadow:none;
+    border-collapse: collapse;
+    font-size: 14px;
+    margin-top: 16%;
+}
+
+#posTable tbody tr
+{
+    background: #01274A;
+    border-top:1px solid #3EA6DB;
+}
+#posTable .teamLogo
+{
+}
+.column-3, .column-4, .column-5, .column-6
+{
+    text-align: center;
+}
+.row-1
+{
+    background:#3ea6db;
+}
+
+.last-row
+{
+  border-bottom:1px solid #3EA6DB;
+}
+
+.subBar
+{
+    position:absolute;
+    width:100%;
+    height:11%;
+    background: #01274A;
+    bottom:1%;
+    font-size: 12px;
+
+}
+
+.subBar ul{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    list-style-type: none;
+}
+.subBar ul li{
+    position:relative;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    border-right:1px dotted #425E77;
+    margin: 0;
+    padding: 0;
+    display: table;
+    text-align: center;
+    float: left;
+    width:33.33%;
+    height: 100%;
+}
+
+.subBar ul li a{
+    color:white !important;
+    text-shadow:none;
+    display: table-cell;
+    font-weight: bold;
+    text-align: center;
+    text-shadow:none;
+    height:100%;
+    vertical-align: middle;
+}
+
+.subBar
+{
+    position:absolute;
+    width:100%;
+    height:11%;
+    background: #01274A;
+    bottom:1%;
+    font-size: 12px;
+
+}
+
+.subBar ul{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    list-style-type: none;
+}
+.subBar ul li{
+    position:relative;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    border-right:1px dotted #425E77;
+    margin: 0;
+    padding: 0;
+    display: table;
+    text-align: center;
+    float: left;
+    width:33.33%;
+    height: 100%;
+}
+
+.subBar ul li a{
+    color:white !important;
+    text-shadow:none;
+    display: table-cell;
+    font-weight: bold;
+    text-align: center;
+    text-shadow:none;
+    height:100%;
+    vertical-align: middle;
+}
+
+.subBar-4Buttons
+{
+    position:absolute;
+    width:100%;
+    height:11%;
+    background: #01274A;
+    bottom:1%;
+    font-size: 12px;
+
+}
+
+.subBar-4Buttons ul{
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    list-style-type: none;
+}
+
+.subBar-4Buttons ul li{
+    position:relative;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    border-right:1px dotted #425E77;
+    margin: 0;
+    padding: 0;
+    display: table;
+    text-align: center;
+    float: left;
+    width:25%;
+    height: 100%;
+}
+
+.subBar-4Buttons ul li a{
+    color:white !important;
+    text-shadow:none;
+    display: table-cell;
+    font-weight: bold;
+    text-align: center;
+    text-shadow:none;
+    height:100%;
+    vertical-align: middle;
+}
+
+.subBarTweet
+{
+    position:fixed;
+    width:100%;
+    height: 8%;
+    background: #01274A;
+    bottom:10.5%;
+    font-size: 12px;
+    display: table;
+    padding-left: 23%;
+    z-index: 100;
+}
+.subBarTweet .tweetImage
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: right;
+}
+.subBarTweet .sendTweet
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+}
+
+.topSubBar ul
+{
+    margin: 5px 0 5px 4px;
+    padding: 0;
+
+}
+.topSubBar
+{
+    position:absolute;
+    left:50%;
+    margin-top: 10%;
+    width:50%;
+    background: #01274A;
+}
+
+
+.topSubBar li{
+    list-style-type: none;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    border-right:1px dotted #425E77;
+    display: inline-block;
+    text-align: center;
+    width:32%;
+}
+
+.topSubBar ul li a{
+    color:white !important;
+    text-shadow:none;
+    display:block;
+}
+
+.subBar-2Buttons
+{
+    bottom:20%;
+    width:100%;
+    background: #01274A;
+}
+
+.subBar-2Buttons ul{
+    padding: 0;
+    height: 100%;
+    list-style-type: none;
+}
+.subBar-2Buttons ul li{
+    position:relative;
+    box-sizing: border-box;
+    -webkit-box-sizing: border-box; /* Safari/Chrome, other WebKit */
+    -moz-box-sizing: border-box;    /* Firefox, other Gecko */
+    border-right:1px dotted #425E77;
+    margin: 0;
+    padding: 0;
+    display: block;
+    text-align: center;
+    float: left;
+    width:50%;
+   height: 100%;
+}
+
+.subBar-2Buttons ul li a{
+    color:white !important;
+    text-shadow:none;
+    display: block;
+    height: 100%;
+    font-weight: bold;
+    text-align: center;
+    text-shadow:none;
+    padding-top: 5%;
+}
+
+#myTeamSubNav,#myTeamSubNav ul
+{
+    margin: 0;
+}
+#myTeamSubNav li
+{
+    width: 50%;
+}
+#teamsSubNav li
+{
+   width:50%;
+}
+
+.liderTitle
+{
+    text-align: center;
+    background: #3EA6db;
+    margin-top: 0.7em;
+    margin-bottom: 0.7em;
+}
+
+.dayTitle
+{
+    background: #3EA6db;
+}
+
+.teamLidersTitle
+{
+    height: 13%;
+    position: absolute;
+    width: 100%;
+    background: #22c33c;
+    z-index: 100;
+}
+
+.teamLidersTitle .title
+{
+    text-align: center;
+    margin: 0;
+    padding-top: 20px;
+}
+.teamLidersTitle .logoLiga
+{
+    position: absolute;
+    top: 15px;
+    left: 15px;
+}
+.teamLidersTitle .logoPepsi
+{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+}
+
+.liderDivision
+{
+
+    text-align: center;
+    background: #3EA6db;
+    height: 30px;
+    margin-top: 2%;
+    margin-left: 0;
+    margin-bottom:0;
+    margin-right: 0;
+}
+
+.lider
+{
+    width: 100%;
+    display: table;
+    margin-left: 20px;
+}
+
+.lider img
+{
+    display: table-cell;
+    vertical-align: middle;
+}
+.lider p
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    width: 70%
+}
+
+.lider .liderName
+{
+    font-size: 18px;
+}
+.lider .liderStat
+{
+    font-size: 18px;
+}
+
+#lidersTable
+{
+    margin-top: 12%;
+}
+#lidersList
+{
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+    width:100%;
+    margin-top: 16%;
+}
+#lidersList li a
+{
+    display: block;
+}
+#gameList
+{
+    list-style-type: none;
+    margin:0;
+    padding: 0;
+    width:100%;
+}
+
+
+.gameFormatList table{
+    width: 100%;
+    color:white;
+    border-collapse: collapse;
+}
+.gameFormatList table tr
+{
+    border-top: 1px solid #3ea6db;
+    width: 100%;
+    height: 70px;
+    background-color: #01274A;
+}
+.gameFormatList table tr td
+{
+    width: 100%;
+    text-align: center;
+}
+
+#pastGamesList
+{
+    top:13%;
+    height: 88%;
+}
+
+.pastGameDate
+{
+    color: #3ea6db;
+    font-size: 14px;
+}
+
+.gameFormatList .leftImage
+{
+    width: 15%;
+}
+
+.gameFormatList .leftTeamName
+{
+    width: 30%;
+}
+.gameFormatList .centerDate
+{
+    color: #3EA6DB;
+    width: 10%;
+}
+.gameFormatList .rightTeamName
+{
+    width:  30%;
+}
+.gameFormatList .rightImage
+{
+    width: 15%;
+}
+
+.centerResults
+{
+    font-size: 20px;
+    width: 25% !important;
+}
+
+.liderType
+{
+    background: #3ea6db;
+    text-align: center;
+    width: 100%;
+    margin: 0;
+    font-size: 16;
+}
+
+#schedule
+{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    font-size: 8px ;
+}
+
+#centerMessage
+{
+    color:black;
+}
+
+#calendarContainer
+{
+    position: absolute;
+    height:80%;
+    width: 100%;
+    top:20%;
+}
+
+#teamHeaderCalendar
+{
+    position: absolute;
+    width: 100%;
+    background: #01274A;
+    height:10.5%;
+    display:table;
+}
+
+#teamHeaderCalendar #teamName
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: center;
+    font-size: 12px;
+}
+#calendarSubNav
+{
+    position:absolute;
+    top:10%;
+    height:10%;
+}
+
+
+.calendarTab{
+    position:absolute;
+    width: 100%;
+    height:100%;
+}
+
+#calendarTable
+{
+    position:absolute;
+    width: 100%;
+    height: 100%;
+    background: #ffffff;
+    border-collapse: collapse;
+}
+
+#calendarTable .days td
+{
+   background: #004b99;
+   color: white;
+   text-align: center;
+   vertical-align: middle !important;
+   border-right: none;
+   height: 5% !important;
+}
+
+#calendarTable tr td
+{
+    vertical-align: top;
+    width: 14.5%;
+    border-right: 1px solid #D9E0E8;
+}
+#calendarTable .hours td
+{
+    border-bottom:1px solid #D9E0E8;
+}
+
+#calendarTable .away{
+    background-color: #3EA6DB;
+}
+
+#calendarTable .awayWord{
+    background-color: #3EA6DB;
+    color: white;
+    font-size: 10px;
+
+}
+
+#calendarTable .dayNumber
+{
+    text-align: left;
+    color: black;
+}
+#calendarTable .home
+{
+    background-color: #22C33C;
+}
+
+#calendarTable .homeWord
+{
+    background-color: #22C33C;
+    color: white;
+    font-size: 10px;
+}
+
+.homeLegend
+{
+
+    color: #22C33C;
+}
+
+.awayLegend
+{
+
+    color: #3EA6DB;
+}
+
+.calendarLegend
+{
+    font-size: 14px;
+    position:fixed;
+    right: 1%;
+    bottom:20.5%;
+    z-index: 1000;
+}
+
+.roundRobinLegend
+{
+    font-size: 28px;
+    position:fixed;
+    width: 100%;
+    text-align: center;
+    bottom:50%;
+    z-index: 1000;
+}
+
+.center{
+    display: block;
+    margin-left: auto;
+    margin-right: auto
+}
+.centerTable
+{
+    padding-left: 26.5%;
+    margin-right: auto
+}
+
+.buttonContainer
+{
+    position: absolute;
+    background-color: #01274A;
+    padding:0;
+    width: 60% !important;
+    text-align: center;
+    bottom:3%;
+    height: 5%;
+    left: 20%;
+    padding-top: 0.5%;
+}
+.buttonOK
+{
+    position: absolute;
+    background-color: #01274A;
+    padding:0;
+    text-align: center;
+    bottom: 3%;
+    height: 5%;
+    left: 32%;
+    display: table;
+
+}
+
+.buttonOK a
+{
+    display: table-cell;
+    vertical-align: middle;
+    text-align: left;
+    font-size: 30px;
+}
+.buttonOK div
+{
+    padding-top: 3px;
+    display: table-cell;
+    vertical-align: middle;
+}
+.buttonContainer ul
+{
+    margin:0;
+    padding:0;
+}
+
+.buttonContainer ul li
+{
+    padding: 0 0;
+}
+#basic-modal-content{
+    height: 100%;
+}
+
+#teamChooseContainer
+{
+    width: 100%;
+    height: 100% !important;
+}
+
+#teamChooseContainer  #main
+{
+    height: 100% ;
+}
+
+#teamList
+{
+    width: 250px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top:5%;
+    height: 90%;
+}
+
+#teamList .titleChoose
+{
+    margin: 0;
+    margin-bottom: 2%;
+    text-align: center;
+    color: white;
+    font-family: "Gill Sans";
+}
+
+#teamList table
+{
+    border-collapse: collapse;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    height: 80%;
+}
+#teamList table tr
+{
+    margin-left: auto;
+    margin-left: auto;
+    border-color: #328DBE ;
+    width: 100%;
+
+}
+#teamList table tr .column-1
+{
+    width: 35% !important;
+    color:white;
+}
+#teamList table tr .column-2
+{
+    width: 65% !important;
+    color:white;
+}
+
+.row:active
+{
+}
+
+ #noTeam{
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    z-index: 4;
+    background: white;
+ }
+
+.optionButton{
+      position: absolute;
+      background-color: #01173A;
+      margin-left: 40%;
+      margin-top: 30%;
+      /*margin:40% 40%;*/
+      color: white !important;
+      text-shadow:none;
+      min-width: 100px;
+      min-height:40px;
+      padding-top: 15px;
+      text-align: center;
+      box-shadow: 0px 3px 8px #aaa, inset 0px 2px 3px #fff;
+}
+
+/*jquery mobile css override*/
+.ui-controlgroup, fieldset.ui-controlgroup {
+    padding:0;
+    margin: 0 0;
+    height: 100%;
+}
+
+.scroller {
+    position:absolute; z-index:1;
+/*  -webkit-touch-callout:none;*/
+    -webkit-tap-highlight-color:rgba(0,0,0,0);
+    padding:0;
+    width:100% !important;
+    font-size: 12px;
+}
+
+.topTitle { 
+    position: absolute;
+    z-index: 1000;
+    height: 5%;
+    width: 100%;
+    background-color: #01274A;
+    text-align: center;
+}
+.topTitle p{ 
+   color: #FFFFFF;
+}
+.subContent { 
+    top: 4%;
+    height:96%;
+}
+#pullDown { 
+    padding: 2.5% 5%;
+}
+
+#activityContainer
+{
+    position: absolute;
+    height: 30%;
+    width: 100%;
+}
+
+#activityList li
+{
+    text-align: center;
+    font-size: 16px;
+}
+
+
+.noAttrList
+{
+    margin: 0;
+    padding: 0;
+    list-style-type: none;
+}

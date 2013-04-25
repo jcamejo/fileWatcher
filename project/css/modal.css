@@ -1,0 +1,39 @@
+  .modal {
+    background-color:#fff;
+    display:none;
+    width:90%;
+    min-height: 90%;
+
+    text-align:left;
+    border:2px solid #333;
+ 
+    z-index:10000;
+   /*-moz-box-shadow: 0 0 50px #ccc;
+    -webkit-box-shadow: 0 0 50px #ccc;*/
+  }
+
+  .modal .close 
+  {
+    padding: 0 0 20px 15px;
+  }
+  .modal h2 {
+    margin:0px;
+    padding:10px 0 10px 45px;
+    border-bottom:1px solid #333;
+    font-size:20px;
+  }
+
+  .dialogModal {
+    background-color:#fff;
+    display:none;
+    width:80%;
+    min-height: 40%;
+
+
+    text-align:left;
+    border:2px solid #333;
+ 
+    z-index:10000;
+   /*-moz-box-shadow: 0 0 50px #ccc;
+    -webkit-box-shadow: 0 0 50px #ccc;*/
+  }

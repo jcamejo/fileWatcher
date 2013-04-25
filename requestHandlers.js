@@ -2,19 +2,58 @@ var exec = require("child_process").exec;
 var queryString = require('querystring');
 var fs = require('fs');
 
+var dirSentinel = {};
+
+
+var startWatch = function (path, directory) {
+    fs.watch(path, {persistent: true}, function(event, filename) { 
+            console.log('event' + event);
+            if (filename) {
+                 console.log('filename provided: ' + filename);
+            } else {
+                console.log('filename not provided');
+            }
+            console.log('directorio ' + directory + ' modificado');
+
+            if (!dirSentinel.hasOwnProperty(directory)) { 
+                dirSentinel[directory] = {}
+            }
+
+            dirSentinel[directory].isModified = true;
+            dirSentinel[directory].dateModified = new Date ();
+
+            console.dir(dirSentinel);
+        
+    });
+}
+
 var iniciar = function (response, postData) {
     console.log('Manipulador de petición iniciar ha sido llamado');
     var text;
     console.log('Watching project');
 
-    fs.watch('project', {persistent: true}, function(event, filename) { 
-        console.log("event " + event);
-            if (filename) {
-                console.log('filename provided: ' + filename);
-            } else {
-                console.log('filename not provided');
-            }
+    fs.readdir('project', function(err, files) { 
+        if (err) throw err;
+        if (files) { 
+
+            for (var i=0; i<files.length; i++) { 
+                console.dir(files);
+                console.log("filename " + files[i]);
+                
+                var check = function (filename) {
+                    fs.stat('project/' + filename, function(err, stats) { 
+                    if (stats.isDirectory()) { 
+                        console.log("watching " + filename);
+                        startWatch('project/' + filename, filename);
+                           
+                        }
+                    });   
+                }(files[i]);
+            } 
+        }
     })
+
+
 
     response.writeHead(200, {"Content-Type": "text/html"});
     response.write('Hola');

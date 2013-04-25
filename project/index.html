@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<!--
+$Id: index.html 280 2013-04-23 22:24:46Z jcamejo $
+-->
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, height=device-height">
+        <title>Pepsi Tienda Virtual</title>
+        <link rel="stylesheet" type="text/css" href="css/style.css" media="screen">
+        <link rel="stylesheet" type="text/css" href="css/modal.css" media="screen">
+        <script type="text/javascript" charset="utf-8" src="js/jquery.min.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/cordova-2.3.0.js"></script>
+        <script type="text/javascript" src="js/facebookPhonegapBridge.js"></script>
+        <script type="text/javascript" src="js/cdv-plugin-fb-connect.js"></script>
+        <script src="js/facebook_js_sdk.js"></script> 
+        <script type="text/javascript" charset="utf-8" src="js/init.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/application.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/iscroll.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/overlay.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/childbrowser.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/jsoauth-1.3.6.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/twitterBridge.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/instagramBridge.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/challenges.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/requests.js"></script>
+        <script type="text/javascript" charset="utf-8" src="js/pullDownOpts.js"></script>
+        <script type="text/javascript">
+
+            var devicePlatform, deviceVersion, appArgs = {};
+
+            var success = function(entries) {
+                var i;
+                for (i=0; i<entries.length; i++) {
+                    console.log(entries[i].name);
+                }
+            }
+
+            var gotFile = function (file) {
+
+                var reader = new FileReader();
+                var userImage = document.getElementById('userImage');
+
+                reader.onload = function () {
+                    userImage.setAttribute('src', reader.result);
+                    userImage.setAttribute('alt', file.name);
+                };
+                reader.readAsDataURL(file);
+            
+                console.log('lastModifiedDate profile ' + file.name + ' ' + file.lastModifiedDate);
+            }
+
+            var gotFileEntry = function (fileEntry) {
+                fileEntry.file(gotFile, fail);
+            }
+
+            var readProfile = function (parent) { 
+                application.profilePath = parent;
+                parent.getFile("profile.png", {create: true, exclusive: false}, gotFileEntry, fail);
+            }
+
+            var readArticles = function (parent) {
+                application.articlePath = parent; 
+                //console.log("Article Folder created");
+            }
+
+            var onGetDirectoryWin = function (parent) {
+                var dataDir = parent.getDirectory("ProfilePictures", {create: true}, readProfile, fail);
+                var dataDirArticle = parent.getDirectory("Articles", {create: true}, readArticles, fail);  
+            }
+
+            var onFileSystemSuccess = function (fileSystem) {
+
+                var dirEntry = fileSystem.root, dataDir;
+                dataDir = fileSystem.root.getDirectory("TiendaVirtual", {create: true}, onGetDirectoryWin, fail);
+                
+                /*
+                 // Get a directory reader
+                var directoryReader = fileSystem.root.createReader();
+
+                // Get a list of all the entries in the directory
+                directoryReader.readEntries(success,fail);
+                */
+
+            }
+
+            var deviceReadyHandler = function (e) {
+
+                if (window.device) {
+                    devicePlatform = device.platform;
+                    deviceVersion = device.version;
+                }
+                else {
+                    devicePlatform = 'Web';
+                    deviceVersion = 0;
+                }
+
+                if (devicePlatform !== 'Web') { 
+                    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFileSystemSuccess, fail);
+                }
+                
+                fbBridge.init({
+                    appId: '322684911166721',
+                    nativeInterface: CDV.FB
+                });
+                twitterBridge.init({
+                    consumerKey: 'uW7qAIXcSg9JrlKocElfQ',
+                    consumerSecret: 'InfCddSYe7Qcepx3tHm3myynMSkRJXFoyET8y1AAFtE', //Dangerous store, look for solution
+                    callbackUrl: "http://www.google.com" 
+                });
+                instagramBridge.init({
+                    client_id: '73c93bcfb637414db5b663203ef82b02',
+                    redirect_uri:'https://www.facebook.com/connect/login_success.html',
+                    response_type: 'token',
+                    scope:'likes+comments'
+                });
+
+                $(".modalInput").overlay({
+                    mask: { 
+                        color: '#ebecff',
+                        loadSpeed: 200,
+                        opacity: 0.9
+                    },
+                    left: '5%',
+                    top: '5%',
+                    closeOnClick: false
+                });
+                $(".dialogLink").overlay({
+                    mask: { 
+                        color: '#01274A',
+                        loadSpeed: 200,
+                        opacity: 1
+                    },
+                    left: '10%',
+                    top: '30%',
+                    closeOnClick: false,
+                    oneInstance: false,
+                    onClose: function () {
+                        challengeStatus.textContent = "";
+                    }
+                });
+
+                document.addEventListener("backbutton", function () {
+                    if (application.navStack.length != 0 ) {
+                        $(application.navStack.pop()).overlay().close();
+                    } else {
+                        if(device.platform === 'Android') {
+                            navigator.app.exitApp();
+                        }
+                    }
+                }, false);
+
+                document.addEventListener('pause', function () {
+                    console.log('on Pause');
+                }, false);
+
+
+                application.start();
+            
+            };
+            document.addEventListener('deviceready', function (e) {
+                try {
+                    return deviceReadyHandler(e);
+                }
+                catch (exp) {
+                    console.error('deviceReadyHandler failure. Message: ' + exp.message);
+                    return false;
+                }
+            });
+
+            var documentReadyHandler = function (e) {
+                initializeEvents();
+                //application.start();
+            };
+
+            $(document).ready(function (e) {
+                try {
+                    return documentReadyHandler(e);
+                }
+                catch (exp) {
+                    console.error('documentReadyHandler failure. Message: ' + exp.message );
+                    return false;
+                }
+            });
+
+        </script>
+    </head>
+    <body>
+        <div id="fb-root"></div>
+        <div id="content" class=""></div>
+        <div id="loginScreen" class="fullScreen hidden">
+            <a id="loginButton"> 
+              LOGIN
+            </a>
+        </div>
+        <div id="articles" class="hidden">
+            <div class="modal" id="showProduct">
+                <p id="articleId" data-articleid=""></p>
+                <p>Nombre del premio</p><h2 id="productName"></h2>
+                <br>
+                <img class="center" id="productImage" src="http://placehold.it/100x100" height="100" width="100" alt="">
+                
+                <p>Detalle del premio</p>
+                <p id="productDescription"></p>
+                <br>
+                <p>Valor del premio</p>
+                <p id="productValue"></p>
+                <br>
+                <a id="buyButton" href="#" >Comprar </a>
+                <a href="#" class="close" > Cerrar </a>
+            </div>
+            <div class="dialogModal" id="confirmDialog">
+               <p>Esta seguro de comprar este articulo?</p>
+               <a href="#" id="confirmPrize" style="font-size: 40px">SI &nbsp;</a>
+               <a href="#" class="close" style="font-size: 40px">NO</a>
+            </div>
+            <div class="dialogModal" id="messageDialog">
+                <img id="booleanImage" src="http://placehold.it/100x100" class="center" alt="">
+                <p id="dialogMessage"></p>
+                <a href="#" class="close" style="font-size: 40px; text-align:center">OK</a>
+            </div>
+            <div class="topTitle">
+                <p>Premios</p>
+            </div>
+            <div id="prizesContainer" class="subTab subContent">
+                <div class="scroller">
+                    <div id="prizeList">
+                        <img src="images/loader.gif" class="loader">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="challenges" class="hidden">
+            <div class="modal" id="showChallenge">
+                <h2>Twittea!</h2>
+                <div id="tweetArea" class="hidden">
+                    <textarea id="tweet"></textarea>
+                    <a id="tweetStatus" href="#" style="font-size: 40px"></a>
+                    <br>
+                    <a id="postTweet" href="#" style="font-size: 40px">Tweet</a>
+                </div>
+                <a href="#" class="close" style="display:block"> Cerrar </a>
+            </div>
+            <div class="dialogModal" id="showDialog">
+                <img id="challengeStatusImage" src="http://placehold.it/100x100" alt="" class="center">
+                <p id="challengeStatus" style="text-align:center"><p>
+                <a href="#" class="close center" style="font-size: 40px; text-align:center; width: 100%">OK</a>
+            </div>
+            <div class="topTitle">
+                <p>Retos</p> 
+            </div>
+            <div id="challengeContainer" class="subTab subContent">
+                <div class="scroller">
+                    <div id="pullDown" class="">
+                        <span class="pullDownIcon"></span><span class="pullDownLabel"></span>
+                    </div>
+                    <div id="challengeList">
+                        <img src="images/loader.gif" class="loader">
+                    </div>
+                </div>
+            </div>     
+        </div>
+        <div id="profile" class="hidden">
+            <div class="topTitle">
+                <p>Perfil</p>
+            </div>
+           
+            <br>
+            <br>
+            <img id="userImage" src="http://placehold.it/100x100" alt="" style="float:right">
+            <p>Nombre: </p>
+            <p id="username"></p>
+            <p>Monedas Acumuladas: </p>
+            <p id="coins"></p>
+            <a id="twitterLogin"> 
+              <span>twitter login</span>
+            </a>
+            <br>
+            <br>
+            <a id="twitterUser"> 
+            </a>
+            <br>
+            <br>
+            <a id="instLogin">
+                <span>Instagram Login</span> 
+            </a>
+            <br>
+            <br>
+            <a id="tweetLogout">
+                <span>Tweet Logout</span> 
+            </a>
+            <a id="fblogout">
+                <span>Facebook Logout</span> 
+            </a>
+            <h1 id="userLoginStatus"></h1>
+            <h2 style="text-align: center">Actividades Recientes</h2>
+            <div id="activityContainer">
+                <div class="scroller">
+                    <ul id="activityList" class="noAttrList ">
+                       
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <nav id="mainNav">
+            <ul data-role="none">
+                <li style="width:19%" data-role="none"><a href="#" id="pepsi-settings"><img class="center" id="pepsi-logo" src="images/pepsi_logo-70x70.png" height="45" width="45" alt=""></a></li>
+                <li data-role="none"><a href="#screen1" id="articlesTab" class="button">1</a></li>
+                <li data-role="none"><a href="#screen2" id="challengesTab" data-parenttab="none" data-transition="none" class="button">2</a></li>
+                <li data-role="none"><a href="#screen3" id="profileTab" class="button">3</a></li>
+            </ul>
+        </nav>
+        
+    </body>
+</html>
