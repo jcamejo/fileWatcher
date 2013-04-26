@@ -6,7 +6,7 @@ var handle = {
     '/' : requestHandlers.iniciar,
     '/iniciar' : requestHandlers.iniciar,
     '/subir' : requestHandlers.subir,
-    '/createjson' : requestHandlers.createJSON
+    '/getdirstatus' : requestHandlers.getDirStatus
 }
 
 

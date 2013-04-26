@@ -1,15 +1,19 @@
 var exec = require("child_process").exec;
 var queryString = require('querystring');
 var fs = require('fs');
+var utility = require('./utility');
 
 var dirSentinel = {};
-
+var lastWatch = null
 
 var startWatch = function (path, directory) {
-    fs.watch(path, {persistent: true}, function(event, filename) { 
-            console.log('event' + event);
+    
+    fs.watch(path, {persistent: true}, function(event, filename) {  
+        var newDate = new Date();   
+        if (!lastWatch || (newDate.getTime() - lastWatch.getTime() > 400)) {  //Fix for the mnultiple prints in file
+            console.log( filename, 'is', event);
             if (filename) {
-                 console.log('filename provided: ' + filename);
+                //console.log('filename provided: ' + filename);
             } else {
                 console.log('filename not provided');
             }
@@ -19,44 +23,45 @@ var startWatch = function (path, directory) {
                 dirSentinel[directory] = {}
             }
 
+            if (dirSentinel.hasOwnProperty('message')) {
+                dirSentinel.message = '';
+            }
+
             dirSentinel[directory].isModified = true;
-            dirSentinel[directory].dateModified = new Date ();
+            dirSentinel[directory].dateModified = new Date().getTime();
 
             console.dir(dirSentinel);
-        
+            lastWatch = new Date ();
+        }
     });
 }
 
 var iniciar = function (response, postData) {
     console.log('Manipulador de petición iniciar ha sido llamado');
     var text;
-    console.log('Watching project');
 
     fs.readdir('project', function(err, files) { 
         if (err) throw err;
         if (files) { 
-
+            console.dir(files);
             for (var i=0; i<files.length; i++) { 
-                console.dir(files);
-                console.log("filename " + files[i]);
-                
+
                 var check = function (filename) {
-                    fs.stat('project/' + filename, function(err, stats) { 
+                   fs.stat('project/' + filename, function(err, stats) { 
                     if (stats.isDirectory()) { 
-                        console.log("watching " + filename);
-                        startWatch('project/' + filename, filename);
-                           
+                            console.log("watching " + filename);
+                            startWatch('project/' + filename, filename);
                         }
-                    });   
+                    });
                 }(files[i]);
             } 
         }
-    })
+    });
 
 
 
     response.writeHead(200, {"Content-Type": "text/html"});
-    response.write('Hola');
+    response.write('FileWatcher');
     response.end();
 }
 
@@ -67,17 +72,16 @@ var subir = function (response, dataPosteada) {
     response.end();
 }
 
-var createJSON =  function (response) {
+var getDirStatus =  function (response) {
     console.log('creating JSON');
-    var object = {
-        a: 1,
-        b: 2,
-        c: 3
-    };
-    response.write(JSON.stringify(object));
+    if (utility.isEmpty(dirSentinel)) {
+        dirSentinel.message = "No modified directories";
+    }
+
+    response.write(JSON.stringify(dirSentinel));
     response.end();
 }
 
 exports.iniciar = iniciar;
 exports.subir = subir;
-exports.createJSON = createJSON;
+exports.getDirStatus = getDirStatus;

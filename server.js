@@ -6,9 +6,9 @@ var init = function (route, handle) {
         
         var dataPosteada = "";
         var pathname = url.parse(request.url).pathname;
+
         if (pathname !== '/favicon.ico') { 
-            console.log("hola");
-            console.log('Peticion para ' + pathname + ' recibida.');
+            console.log('Peticion para ' + request.url );
             
             request.setEncoding("utf8");
             request.addListener("data", function(trozoPosteado){
@@ -17,7 +17,7 @@ var init = function (route, handle) {
             });
 
             request.addListener('end', function () {
-                
+                console.log('requestUrl ' + request.url); 
                 route(handle, pathname, response, dataPosteada);
             });
         }
@@ -25,6 +25,12 @@ var init = function (route, handle) {
 
     http.createServer(onRequest).listen(8888);
     console.log("Servidor Iniciado");
+
+
+    http.get("http://10.0.0.249:8888/", function(res) {
+    }).on('error', function(e) {
+      console.log("Got error: " + e.message);
+    });
 }
 
 exports.init = init;
