@@ -36,7 +36,7 @@ var startWatch = function (path, directory) {
     });
 }
 
-var iniciar = function (response, postData) {
+var iniciar = function (response, postData, queryObj) {
     console.log('Manipulador de petición iniciar ha sido llamado');
     var text;
 
@@ -72,14 +72,20 @@ var subir = function (response, dataPosteada) {
     response.end();
 }
 
-var getDirStatus =  function (response) {
-    console.log('creating JSON');
+var getDirStatus =  function (response, postData, queryObj) {
+
+    var jsonString = '';
+    console.dir(queryObj);
+
     if (utility.isEmpty(dirSentinel)) {
         dirSentinel.message = "No modified directories";
     }
 
-    response.write(JSON.stringify(dirSentinel));
+    jsonString = queryObj.hasOwnProperty('callback') ? (queryObj.callback + '(' + JSON.stringify(dirSentinel) + ')') : JSON.stringify(dirSentinel);
+    response.writeHead(200, {"Content-Type": "application/javascript"});
+    response.write(jsonString);
     response.end();
+    
 }
 
 exports.iniciar = iniciar;

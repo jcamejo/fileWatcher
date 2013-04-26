@@ -1,25 +1,29 @@
 var http = require("http");
 var url = require("url");
+var queryString = require("querystring");
 
 var init = function (route, handle) {
     var onRequest = function (request, response) {
-        
-        var dataPosteada = "";
-        var pathname = url.parse(request.url).pathname;
+        var postedData = "";
+        var theUrl = url.parse(request.url);
+        var pathname = theUrl.pathname;
+        var queryObj = queryString.parse(theUrl.query);
 
         if (pathname !== '/favicon.ico') { 
             console.log('Peticion para ' + request.url );
-            
+
             request.setEncoding("utf8");
-            request.addListener("data", function(trozoPosteado){
-                dataPosteada += trozoPosteado;
-                console.log('recibido trozo POST "' + trozoPosteado + "'.");
-            });
+            
+            /*When is a post request*/
+            request.addListener("data", function(dataUnit){
+                postedData += dataUnit;
+                console.log('recibido trozo POST "' + dataUnit + "'.");
+            });       
 
             request.addListener('end', function () {
-                console.log('requestUrl ' + request.url); 
-                route(handle, pathname, response, dataPosteada);
+                route(handle, pathname, response, postedData, queryObj);
             });
+
         }
     }
 
